@@ -1,0 +1,48 @@
+.text {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 15px;
+  background: #000;
+  color: #fff;
+}
+
+.link {
+  font-weight: 600;
+  text-decoration: underline;
+  line-height: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1170px;
+  margin: 47px auto 0;
+  padding-bottom: 16px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  a {
+    line-height: 24px;
+  }
+}
+
+.active {
+  border-bottom: 1px solid #000;
+}
+
+.devider {
+  border-bottom: 0.5px solid #b3b3b3;
+}

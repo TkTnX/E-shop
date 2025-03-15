@@ -1,0 +1,16 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  a {
+    transition: all 0.1s ease-in;
+  }
+  a:hover {
+    opacity: 0.5;
+  }
+}
+
+.link {
+  display: flex;
+}
