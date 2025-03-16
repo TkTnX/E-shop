@@ -9,6 +9,15 @@
   button {
     display: flex;
   }
+
+  @media (max-width: 840px) {
+    background-color: inherit;
+    gap: 15px;
+    padding: 0;
+    input {
+      display: none;
+    }
+  }
 }
 
 .input {

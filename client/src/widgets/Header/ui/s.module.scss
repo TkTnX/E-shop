@@ -5,6 +5,10 @@
   padding: 15px;
   background: #000;
   color: #fff;
+
+  @media (max-width: 550px) {
+    font-size: 10px;
+  }
 }
 
 .link {
@@ -17,9 +21,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1170px;
+  max-width: 1200px;
   margin: 47px auto 0;
   padding-bottom: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .logo {
@@ -36,6 +42,14 @@
 
   a {
     line-height: 24px;
+  }
+
+  @media (max-width: 920px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 }
 

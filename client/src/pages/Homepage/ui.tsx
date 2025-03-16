@@ -1,5 +1,9 @@
+import { Hero } from "@/widgets/Hero";
+import s from "./s.module.scss";
 export const Homepage = () => {
   return (
-    <div className=''>Homepage</div>
-  )
-}
+    <main className={s.container}>
+      <Hero />
+    </main>
+  );
+};
