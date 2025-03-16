@@ -6,6 +6,7 @@
 
   --text: #000;
   --primary: #db4444;
+  --gray: #f5f5f5;
   --font-size: 16px;
   --font-weight: 400;
 }
@@ -22,6 +23,4 @@ a {
   transition: all 0.1s ease-in;
 }
 
-a:hover {
-  opacity: 0.6;
-}
+

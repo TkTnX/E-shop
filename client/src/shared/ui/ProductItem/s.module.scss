@@ -1,0 +1,72 @@
+.item {
+  width: 270px;
+  height: 350px;
+  border-radius: 4px;
+  justify-self: center;
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 860px) {
+    width: 100%;
+  }
+}
+
+.imgWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  background-color: var(--gray);
+}
+
+.discountLabel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+
+  background-color: var(--primary);
+  color: #fff;
+  padding: 4px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 4px;
+}
+
+.link {
+  padding-top: 16px;
+  display: block;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.price {
+  margin-top: 8px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--primary);
+}
+
+.discount {
+  color: var(--primary);
+}
+
+.discountDefaultPrice {
+  opacity: 0.5;
+  text-decoration: line-through;
+  color: var(--text);
+  margin-left: 12px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}

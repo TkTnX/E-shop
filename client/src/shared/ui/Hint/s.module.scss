@@ -1,0 +1,19 @@
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--primary);
+}
+
+.block {
+  background-color: var(--primary);
+  width: 20px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+}
