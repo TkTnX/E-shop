@@ -5,6 +5,7 @@ import { connectDB } from "./connectDB.js";
 connectDB();
 
 const seedDB = async () => {
+  await Product.deleteMany({});
   const products = [];
 
   for (let i = 0; i < PRODUCTS.length; i++) {

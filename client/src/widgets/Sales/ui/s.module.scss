@@ -1,3 +1,21 @@
 .wrapper {
   margin-top: 140px;
+  border-bottom: 0.5px solid #b3b3b3;
+  padding-bottom: 60px;
+}
+
+.link {
+  display: block;
+  max-width: fit-content;
+  margin: 60px auto 0;
+  color: #fff;
+  background-color: var(--primary);
+  font-weight: 500;
+  padding: 16px 48px;
+  border-radius: 4px;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }

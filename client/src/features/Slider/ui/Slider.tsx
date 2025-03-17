@@ -37,11 +37,11 @@ export const Slider = ({
       className={s.slider}
     >
       {!isPending
-        ? items.map((sale: ProductItemType) => (
-            <SwiperSlide key={sale._id}>
+        ? items.map((item: ProductItemType) => (
+            <SwiperSlide key={item._id}>
               <ProductItem
-                actions={<ProductItemControls item={sale} />}
-                item={sale}
+                actions={<ProductItemControls item={item} />}
+                item={item}
               />
             </SwiperSlide>
           ))

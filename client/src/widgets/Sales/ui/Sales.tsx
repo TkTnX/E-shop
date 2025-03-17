@@ -5,6 +5,7 @@ import { useState } from "react";
 import SwiperCore from "swiper";
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../api";
+import { Link } from "react-router";
 
 export const Sales = () => {
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null);
@@ -13,7 +14,6 @@ export const Sales = () => {
     queryKey: ["sales"],
     queryFn: () => getProducts(),
   });
-
 
   if (error) return <h1>{error.message}</h1>;
 
@@ -24,7 +24,14 @@ export const Sales = () => {
         title="Flash Sales"
         hintTitle="Today's"
       />
-      <Slider setSwiperInstance={setSwiperInstance} isPending={isPending} items={data} />
+      <Slider
+        setSwiperInstance={setSwiperInstance}
+        isPending={isPending}
+        items={data}
+      />
+      <Link to="/catalog" className={s.link}>
+        View All Products
+      </Link>
     </section>
   );
 };

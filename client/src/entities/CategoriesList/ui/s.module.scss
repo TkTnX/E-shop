@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.link {
+  border: 1px solid #a6a6a6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 25px 55px;
+  text-align: center;
+  width: 170px;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    background-color: var(--primary);
+    color: #fff;
+  }
+}

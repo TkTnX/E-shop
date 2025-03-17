@@ -19,6 +19,10 @@ const ProductModel = new mongoose.Schema({
   },
   description: String,
   discount: Number,
+  category: {
+    type: String,
+    required: true,
+  },
 });
 
 export default mongoose.model("Product", ProductModel);
