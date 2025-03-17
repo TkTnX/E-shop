@@ -9,7 +9,6 @@ type Props = {
 };
 
 export const ProductItem = ({ item, actions }: Props) => {
-  console.log(item);
   return (
     <div className={s.item}>
       <div className={s.imgWrapper}>
@@ -20,7 +19,7 @@ export const ProductItem = ({ item, actions }: Props) => {
         {actions}
       </div>
 
-      <Link className={s.link} to={`/product/${item.id}`}>
+      <Link className={s.link} to={`/product/${item._id}`}>
         <h4 className={s.title}>{item.title}</h4>
         <p className={s.price}>
           {item.discount ? (

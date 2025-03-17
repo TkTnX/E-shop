@@ -3,9 +3,9 @@ import s from "./s.module.scss";
 import { HeroSlider } from "@/features/HeroSlider";
 export const Hero = () => {
   return (
-    <div className={s.wrapper}>
+    <section className={s.wrapper}>
       <HeroSidebar />
       <HeroSlider />
-    </div>
+    </section>
   );
 };

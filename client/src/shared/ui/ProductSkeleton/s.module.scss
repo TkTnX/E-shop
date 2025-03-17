@@ -1,0 +1,23 @@
+.skeleton {
+  width: 270px;
+  border-radius: 4px;
+  height: 350px;
+
+  @media (max-width: 860px) {
+    width: 100%;
+  }
+  background-color: #cacaca;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,19 +1,23 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { SALES_ITEMS } from "./config";
 import { ProductItem } from "@/shared/ui/ProductItem";
 import { ProductItemType } from "@/app/types";
 import { ProductItemControls } from "@/features/ProductItemControls";
 import s from "./s.module.scss";
 // @ts-ignore
 import "swiper/css";
+import { ProductSkeleton } from "@/shared/ui/ProductSkeleton";
 type Props = {
   items: ProductItemType[];
   setSwiperInstance: (swiper: SwiperCore) => void;
+  isPending?: boolean;
 };
 
-export const Slider = ({ items, setSwiperInstance }: Props) => {
-  console.log(items);
+export const Slider = ({
+  items,
+  setSwiperInstance,
+  isPending = false,
+}: Props) => {
   return (
     <Swiper
       onSwiper={setSwiperInstance}
@@ -32,14 +36,20 @@ export const Slider = ({ items, setSwiperInstance }: Props) => {
       }}
       className={s.slider}
     >
-      {SALES_ITEMS.map((sale: ProductItemType) => (
-        <SwiperSlide key={sale.id}>
-          <ProductItem
-            actions={<ProductItemControls item={sale} />}
-            item={sale}
-          />
-        </SwiperSlide>
-      ))}
+      {!isPending
+        ? items.map((sale: ProductItemType) => (
+            <SwiperSlide key={sale._id}>
+              <ProductItem
+                actions={<ProductItemControls item={sale} />}
+                item={sale}
+              />
+            </SwiperSlide>
+          ))
+        : [...new Array(6)].map((_, index) => (
+            <SwiperSlide>
+              <ProductSkeleton key={index} />
+            </SwiperSlide>
+          ))}
     </Swiper>
   );
 };
