@@ -6,8 +6,10 @@
   @media (max-width: 860px) {
     width: 100%;
   }
-  background-color: #cacaca;
-  animation: pulse 1.5s ease-in-out infinite;
+  & {
+    background-color: #cacaca;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
 }
 
 @keyframes pulse {

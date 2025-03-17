@@ -3,6 +3,20 @@
   align-items: center;
   gap: 30px;
   margin-top: 60px;
+
+  @media (max-width: 1230px) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 390px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .link {
@@ -18,8 +32,22 @@
   width: 170px;
   transition: all 0.1s ease-in;
 
+  img {
+    transition: all 0.1s ease-in;
+  }
+
   &:hover {
     background-color: var(--primary);
     color: #fff;
+    img {
+      filter: invert(1);
+    }
+  }
+
+  @media (max-width: 1230px) {
+    width: 100%;
+  }
+  @media (max-width: 960px) {
+    padding: 15px 25px;
   }
 }

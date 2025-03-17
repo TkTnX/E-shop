@@ -14,7 +14,7 @@ export const ProductItemControls = ({ item }: Props) => {
         <button>
           <Heart />
         </button>
-        <Link to={`/product/${item.id}`}>
+        <Link to={`/product/${item._id}`}>
           <Eye />
         </Link>
       </div>
