@@ -1,28 +1,72 @@
 import { FormInput } from "@/shared/ui/FormInput";
 import s from "./s.module.scss";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useState } from "react";
+import { axiosInstance } from "@/shared/api/axiosInstance";
+import { AxiosError } from "axios";
+import { observer } from "mobx-react-lite";
+import { userStore } from "../model";
 
 type Props = {
   type: "signUp" | "login";
 };
 
-export const AuthForm = ({ type }: Props) => {
+export const AuthForm = observer(({ type }: Props) => {
   const isSignUp = type === "signUp" ? true : false;
+  const [error, setError] = useState<null | string>(null);
+  const navigate = useNavigate();
+  const { setUser, user } = userStore;
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const { email, password, username } = Object.fromEntries(formData);
+      if (!email || !password || (isSignUp && !username))
+        return setError("All fields are required!");
+
+      if (isSignUp) {
+        const newUser = await axiosInstance.post("/users/sign-up", {
+          email,
+          password,
+          username,
+        });
+        setUser(newUser.data);
+        return navigate(`/profile`);
+      } else {
+        const user = await axiosInstance.post("/users/login", {
+          email,
+          password,
+        });
+
+        setUser(user.data);
+      }
+    } catch (error: unknown) {
+      console.log(`ERROR!`, error);
+      if (error instanceof AxiosError) {
+        setError(error.response?.data.message || "Something went wrong!");
+      }
+    }
+  };
+
+  console.log(user);
+
   return (
     <div className={s.wrapper}>
       <h4 className={s.title}>
         {isSignUp ? "Create an account" : "Log in to E-store"}
       </h4>
       <p className={s.subtitle}>Enter your details below</p>
-      <form className={s.form}>
-        {isSignUp && <FormInput name="username" placeholder="Name" />}
-        <FormInput name="email" placeholder="Email" />
-        <FormInput name="password" placeholder="Passowrd" />
+      <form onSubmit={onSubmit} className={s.form}>
+        {isSignUp && <FormInput required name="username" placeholder="Name" />}
+        <FormInput required name="email" placeholder="Email" />
+        <FormInput required name="password" placeholder="Passowrd" />
 
-        <button className={s.button}>
+        <button type="submit" className={s.button}>
           {isSignUp ? "Create Account" : "Log in"}
         </button>
       </form>
+      {error && <span className={s.error}>{error}</span>}
       <p className={s.link}>
         {isSignUp ? (
           <>
@@ -36,4 +80,4 @@ export const AuthForm = ({ type }: Props) => {
       </p>
     </div>
   );
-};
+});

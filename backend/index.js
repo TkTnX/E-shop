@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import productRouter from "./routes/product.route.js";
+import userRouter from "./routes/user.route.js";
 import { connectDB } from "./libs/connectDB.js";
 const PORT = 3000;
 
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use("/products", productRouter);
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   connectDB();
