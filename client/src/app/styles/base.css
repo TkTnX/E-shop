@@ -23,4 +23,8 @@ a {
   transition: all 0.1s ease-in;
 }
 
-
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

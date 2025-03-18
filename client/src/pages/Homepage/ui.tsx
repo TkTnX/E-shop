@@ -1,9 +1,10 @@
-import { Hero } from "@/widgets/Hero";
 import s from "./s.module.scss";
+import { Hero } from "@/widgets/Hero";
 import { Sales } from "@/widgets/Sales";
-import { Categories } from "@/widgets/Categories/ui";
+import { Categories } from "@/widgets/Categories";
 import { BestSelling } from "@/widgets/BestSelling";
-import { Banner } from "@/widgets/Banner/ui";
+import { Benefits } from "@/widgets/Benefits";
+import { Banner } from "@/widgets/Banner";
 export const Homepage = () => {
   return (
     <main className={s.container}>
@@ -12,6 +13,7 @@ export const Homepage = () => {
       <Categories />
       <BestSelling />
       <Banner />
+      <Benefits />
     </main>
   );
 };

@@ -1,0 +1,8 @@
+.input {
+  border-bottom: 1px solid #808080;
+  padding-bottom: 8px;
+
+  &::placeholder {
+    color: #999999;
+  }
+}

@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin-top: 45px;
+  padding-right: 15px;
+  gap: 15px;
+
+  @media (max-width: 1215px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 910px) {
+    flex-direction: column;
+    margin-right: 0;
+    padding: 0 15px;
+  }
+}
+.img {
+  @media (max-width: 1215px) {
+    max-width: 500px;
+    max-height: 500px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 910px) {
+    width: 100%;
+    height: 100%;
+  }
+}

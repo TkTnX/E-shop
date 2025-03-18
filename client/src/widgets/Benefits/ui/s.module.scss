@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 140px;
+  gap: 30px;
+
+  @media (max-width: 860px) {
+    flex-wrap: wrap;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  h5 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 24px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+}

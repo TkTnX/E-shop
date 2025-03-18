@@ -1,0 +1,46 @@
+.wrapper {
+  @media (max-width: 910px) {
+    width: 100%;
+  }
+}
+
+.title {
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+
+  @media (max-width: 485px) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  margin-top: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.button {
+  border-radius: 4px;
+  padding: 16px 0;
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+.link {
+  text-align: center;
+  color: #4d4d4d;
+  margin-top: 32px;
+
+  a {
+    font-weight: 500;
+    display: inline-block;
+    border-bottom: 1px solid #4d4d4d;
+  }
+}
