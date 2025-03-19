@@ -27,7 +27,7 @@ export const AuthForm = observer(({ type }: Props) => {
 
       if (isSignUp) {
         const newUser = await axiosInstance.post(
-          "/users/sign-up",
+          "/users/auth/sign-up",
           {
             email,
             password,
@@ -39,7 +39,7 @@ export const AuthForm = observer(({ type }: Props) => {
         return navigate(`/profile`);
       } else {
         const user = await axiosInstance.post(
-          "/users/login",
+          "/users/auth/login",
           {
             email,
             password,
@@ -66,7 +66,7 @@ export const AuthForm = observer(({ type }: Props) => {
       <p className={s.subtitle}>Enter your details below</p>
       <form onSubmit={onSubmit} className={s.form}>
         {isSignUp && <FormInput required name="username" placeholder="Name" />}
-        <FormInput required name="email" placeholder="Email" />
+        <FormInput required name="email" type="email" placeholder="Email" />
         <FormInput required name="password" placeholder="Passowrd" />
 
         <button type="submit" className={s.button}>

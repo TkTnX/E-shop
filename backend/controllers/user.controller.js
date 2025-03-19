@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
+import Cart from "../models/cart.model.js";
 import jwt from "jsonwebtoken";
 export const createUser = async (req, res) => {
   try {
@@ -28,14 +29,20 @@ export const createUser = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
-    // * TODO: Фикс адаптива на главной
-    // TODO: Доделать регистрацию пользователя
-    // * TODO:  (при заходе на сайт по токену входить в аккаун)
-    // (при входе в аккаунт сразу отображать данные 'сейчас они не обновляются')
-    // (функция logout удалять токен)
-    //   TODO: При регистрации создавать корзину
+    // * TODO: Доделать регистрацию пользователя
+    // * TODO: (запрет заходить в /login & /sign-up при наличии аккаунта)
+    // * TODO: (функция logout удалять токен)
+    // * TODO: (dropdown при нажатии на аватарку)
+    // *  TODO: При регистрации создавать корзину
+
+    const newCart = await Cart.create({ userId: newUser._id });
+
+    if (!newCart) return res.status(500).json({ message: "Cart not created!" });
+
+    await User.updateOne({ _id: newUser._id }, { cartId: newCart._id });
 
     const { password: _, ...others } = newUser._doc;
+
     return res.status(200).json(others);
   } catch (error) {
     console.log(error);
@@ -77,11 +84,23 @@ export const loginUser = async (req, res) => {
 export const loginUserByToken = async (req, res) => {
   try {
     const userId = req.userId;
-    if (!userId) return res.status(404).json({ message: "User not found!" });
+    if (!userId) return res.status(401).json({ message: "User not found!" });
 
     const findUser = await User.findById(userId);
+    if (!findUser) return res.status(404).json({ message: "User not found!" });
     const { password: _, ...others } = findUser._doc;
     return res.status(200).json(others);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const logoutUser = async (req, res) => {
+  try {
+    res.clearCookie("token");
+
+    return res.status(200).json({ message: "Logout successful!" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error.message });

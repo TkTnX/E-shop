@@ -1,7 +1,19 @@
-import { AuthForm } from "@/features/Auth";
+import { AuthForm, userStore } from "@/features/Auth";
 import s from "./s.module.scss";
+import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 
-export const SignUpPage = () => {
+export const SignUpPage = observer(() => {
+  const navigate = useNavigate();
+  const { user } = userStore;
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [navigate, user]);
+
   return (
     <div className={s.wrapper}>
       <div className={s.img}>
@@ -10,4 +22,4 @@ export const SignUpPage = () => {
       <AuthForm type="signUp" />
     </div>
   );
-};
+});

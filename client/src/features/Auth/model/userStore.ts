@@ -14,11 +14,20 @@ class UserStore {
   };
 
   login = async () => {
-    const user = await axiosInstance.get("/users/me", {
+    const user = await axiosInstance.get("/users/auth/me", {
       withCredentials: true,
     });
     this.user = user.data;
     return user.data;
+  };
+
+  logout = async () => {
+    await axiosInstance.post(
+      "/users/auth/logout",
+      {},
+      { withCredentials: true }
+    );
+    this.user = null;
   };
 }
 

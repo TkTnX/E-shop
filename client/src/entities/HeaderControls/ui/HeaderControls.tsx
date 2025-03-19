@@ -4,23 +4,26 @@ import { Heart, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router";
 import { userStore } from "@/features/Auth";
 import { useEffect, useState } from "react";
+import { HeaderDropdown } from "./HeaderDropdown";
 export const HeaderControls = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [open, setOpen] = useState(false);
   const { user, login } = userStore;
+  
   useEffect(() => {
     const checkUser = async () => {
       if (user) {
         setAuthenticated(true);
-        return;
+      } else {
+        const user = await login();
+        if (user) setAuthenticated(true);
       }
-
-      login()
-        .then((user) => user && setAuthenticated(true))
-        .catch((error) => console.error(error));
     };
     checkUser();
   }, [login, user]);
-  console.log(user);
+
+
+
   return (
     <div className={s.controls}>
       <HeaderSearch />
@@ -30,13 +33,26 @@ export const HeaderControls = () => {
       <Link className={s.link} to="/cart">
         <ShoppingCart />
       </Link>
-      <Link className={s.link} to={authenticated ? "/profile" : "/sign-up"}>
-        {authenticated ? (
-          <img width={24} height={24} src="/images/general/noAvatar.png" />
-        ) : (
+      {authenticated ? (
+        <div className={s.dropdownWrapper}>
+          <button onClick={() => setOpen((prev) => !prev)} className={s.link}>
+            <img
+              className={s.avatar}
+              src={user?.img || "/images/general/noAvatar.png"}
+            />
+          </button>
+          {open && (
+            <HeaderDropdown
+              setAuthenticated={setAuthenticated}
+              setOpen={setOpen}
+            />
+          )}
+        </div>
+      ) : (
+        <Link className={s.link} to={"/sign-up"}>
           <User />
-        )}
-      </Link>
+        </Link>
+      )}
     </div>
   );
 };
