@@ -15,7 +15,7 @@ export const AuthForm = observer(({ type }: Props) => {
   const isSignUp = type === "signUp" ? true : false;
   const [error, setError] = useState<null | string>(null);
   const navigate = useNavigate();
-  const { setUser, user } = userStore;
+  const { setUser } = userStore;
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
@@ -26,18 +26,26 @@ export const AuthForm = observer(({ type }: Props) => {
         return setError("All fields are required!");
 
       if (isSignUp) {
-        const newUser = await axiosInstance.post("/users/sign-up", {
-          email,
-          password,
-          username,
-        });
+        const newUser = await axiosInstance.post(
+          "/users/sign-up",
+          {
+            email,
+            password,
+            username,
+          },
+          { withCredentials: true }
+        );
         setUser(newUser.data);
         return navigate(`/profile`);
       } else {
-        const user = await axiosInstance.post("/users/login", {
-          email,
-          password,
-        });
+        const user = await axiosInstance.post(
+          "/users/login",
+          {
+            email,
+            password,
+          },
+          { withCredentials: true }
+        );
 
         setUser(user.data);
       }
@@ -49,7 +57,6 @@ export const AuthForm = observer(({ type }: Props) => {
     }
   };
 
-  console.log(user);
 
   return (
     <div className={s.wrapper}>

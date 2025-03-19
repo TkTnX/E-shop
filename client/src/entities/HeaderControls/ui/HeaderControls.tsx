@@ -6,11 +6,21 @@ import { userStore } from "@/features/Auth";
 import { useEffect, useState } from "react";
 export const HeaderControls = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const { user } = userStore;
-  console.log(user);
+  const { user, login } = userStore;
   useEffect(() => {
-    if (user) setAuthenticated(true);
-  }, [user]);
+    const checkUser = async () => {
+      if (user) {
+        setAuthenticated(true);
+        return;
+      }
+
+      login()
+        .then((user) => user && setAuthenticated(true))
+        .catch((error) => console.error(error));
+    };
+    checkUser();
+  }, [login, user]);
+  console.log(user);
   return (
     <div className={s.controls}>
       <HeaderSearch />

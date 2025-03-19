@@ -28,10 +28,10 @@ export const createUser = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
-    // TODO: Фикс адаптива на главной
+    // * TODO: Фикс адаптива на главной
     // TODO: Доделать регистрацию пользователя
+    // * TODO:  (при заходе на сайт по токену входить в аккаун)
     // (при входе в аккаунт сразу отображать данные 'сейчас они не обновляются')
-    // (при заходе на сайт по токену входить в аккаун)
     // (функция logout удалять токен)
     //   TODO: При регистрации создавать корзину
 
@@ -58,6 +58,7 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials!" });
 
     const token = jwt.sign({ userId: findUser._id }, process.env.JWT_SECRET);
+    console.log(token);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -65,6 +66,20 @@ export const loginUser = async (req, res) => {
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
 
+    const { password: _, ...others } = findUser._doc;
+    return res.status(200).json(others);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const loginUserByToken = async (req, res) => {
+  try {
+    const userId = req.userId;
+    if (!userId) return res.status(404).json({ message: "User not found!" });
+
+    const findUser = await User.findById(userId);
     const { password: _, ...others } = findUser._doc;
     return res.status(200).json(others);
   } catch (error) {
