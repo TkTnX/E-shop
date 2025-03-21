@@ -8,12 +8,9 @@ type Props = {
 export const Breadcrumbs = ({ steps }: Props) => {
   return (
     <div className={s.breadcrumbs}>
-      <Link className={s.item} to={"/"}>
-        Home
-      </Link>
       {steps.map((step, index) => (
         <>
-          <span>/</span>
+          {index > 0 && <span className={s.devider}>/</span>}
           <Link className={s.item} to={step.href || ""} key={index}>
             {step.name}
           </Link>

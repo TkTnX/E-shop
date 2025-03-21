@@ -6,7 +6,6 @@ export const getFavorites = async (req, res) => {
     if (!userId) return res.status(401).json({ message: "User not found!" });
 
     const favorites = await Favorite.find({ user: userId }).populate("product");
-    console.log(favorites);
     return res.status(200).json(favorites);
   } catch (error) {
     console.log(error);

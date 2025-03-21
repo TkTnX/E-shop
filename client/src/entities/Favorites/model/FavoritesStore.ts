@@ -14,7 +14,6 @@ class FavoritesStore {
     try {
       const res = await getFavorites();
       this.favorites = res;
-      console.log(this.favorites);
     } catch (error) {
       console.log(error);
       if (error instanceof Error) this.error = error.message;

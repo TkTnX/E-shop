@@ -9,6 +9,17 @@
   border-radius: 4px;
   box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
   padding: 24px 40px;
+
+  p {
+    flex: 1;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 40px;
 }
 
 .cartItem {
@@ -18,4 +29,28 @@
   border-radius: 4px;
   box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
   padding: 24px 40px;
+  gap: 1px;
+}
+
+.imgWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  img {
+    width: 54px;
+    height: 54px;
+  }
+  h5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; // Определяем количество строк перед достижением многоточия
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+}
+
+.price,
+.subtotal {
+  flex: 1;
 }

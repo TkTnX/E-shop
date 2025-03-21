@@ -25,6 +25,19 @@ export type FavoriteItemType = {
   product: ProductItemType;
 };
 
-export interface CartItemType extends ProductItemType {
+export type CartType = {
+  _id: number;
+  userId: number;
+  totalPrice: number;
+  products: {
+    product: ProductItemType;
+    quantity: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+};
+
+export interface CartItemType {
+  product: ProductItemType;
   quantity: number;
 }

@@ -3,8 +3,6 @@ import User from "../models/user.model.js";
 import Cart from "../models/cart.model.js";
 import jwt from "jsonwebtoken";
 
-// TODO: WishList (favorites) страница
-// TODO: Начать корзину
 
 export const createUser = async (req, res) => {
   try {
@@ -64,7 +62,6 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials!" });
 
     const token = jwt.sign({ userId: findUser._id }, process.env.JWT_SECRET);
-    console.log(token);
 
     res.cookie("token", token, {
       httpOnly: true,
