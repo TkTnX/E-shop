@@ -3,6 +3,7 @@ import { RootLayout } from "@/shared/ui/RootLayout";
 import { Homepage } from "@/pages/Homepage";
 import { SignUpPage } from "@/pages/SignUpPage";
 import { LoginPage } from "@/pages/LoginPage";
+import { FavoritesPage } from "@/pages/FavoritesPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/favorites",
+        element: <FavoritesPage />,
       },
     ],
   },

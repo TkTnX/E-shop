@@ -5,11 +5,13 @@ import { Link } from "react-router";
 import { userStore } from "@/features/Auth";
 import { useEffect, useState } from "react";
 import { HeaderDropdown } from "./HeaderDropdown";
+import {favoritesStore} from "@/entities/Favorites/model/FavoritesStore";
 export const HeaderControls = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [open, setOpen] = useState(false);
   const { user, login } = userStore;
-  
+  const { fetchFavorites } = favoritesStore;
+
   useEffect(() => {
     const checkUser = async () => {
       if (user) {
@@ -18,11 +20,10 @@ export const HeaderControls = () => {
         const user = await login();
         if (user) setAuthenticated(true);
       }
+      await fetchFavorites();
     };
     checkUser();
-  }, [login, user]);
-
-
+  }, [fetchFavorites, login, user]);
 
   return (
     <div className={s.controls}>

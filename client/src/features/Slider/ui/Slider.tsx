@@ -9,7 +9,7 @@ import "swiper/css";
 import { ProductSkeleton } from "@/shared/ui/ProductSkeleton";
 type Props = {
   items: ProductItemType[];
-  setSwiperInstance: (swiper: SwiperCore) => void;
+  setSwiperInstance?: (swiper: SwiperCore) => void;
   isPending?: boolean;
 };
 

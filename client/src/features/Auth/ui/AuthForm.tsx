@@ -26,26 +26,18 @@ export const AuthForm = observer(({ type }: Props) => {
         return setError("All fields are required!");
 
       if (isSignUp) {
-        const newUser = await axiosInstance.post(
-          "/users/auth/sign-up",
-          {
-            email,
-            password,
-            username,
-          },
-          { withCredentials: true }
-        );
+        const newUser = await axiosInstance.post("/users/auth/sign-up", {
+          email,
+          password,
+          username,
+        });
         setUser(newUser.data);
         return navigate(`/profile`);
       } else {
-        const user = await axiosInstance.post(
-          "/users/auth/login",
-          {
-            email,
-            password,
-          },
-          { withCredentials: true }
-        );
+        const user = await axiosInstance.post("/users/auth/login", {
+          email,
+          password,
+        });
 
         setUser(user.data);
       }
@@ -56,7 +48,6 @@ export const AuthForm = observer(({ type }: Props) => {
       }
     }
   };
-
 
   return (
     <div className={s.wrapper}>

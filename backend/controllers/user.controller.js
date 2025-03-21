@@ -2,6 +2,10 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 import Cart from "../models/cart.model.js";
 import jwt from "jsonwebtoken";
+
+// TODO: WishList (favorites) страница
+// TODO: Начать корзину
+
 export const createUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -29,11 +33,6 @@ export const createUser = async (req, res) => {
       secure: process.env.NODE_ENV === "production",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     });
-    // * TODO: Доделать регистрацию пользователя
-    // * TODO: (запрет заходить в /login & /sign-up при наличии аккаунта)
-    // * TODO: (функция logout удалять токен)
-    // * TODO: (dropdown при нажатии на аватарку)
-    // *  TODO: При регистрации создавать корзину
 
     const newCart = await Cart.create({ userId: newUser._id });
 
