@@ -1,0 +1,21 @@
+.table {
+  margin-top: 80px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
+  padding: 24px 40px;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
+  padding: 24px 40px;
+}

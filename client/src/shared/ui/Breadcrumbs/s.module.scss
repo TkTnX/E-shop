@@ -1,0 +1,20 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.5;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:last-child {
+    opacity: 1;
+  }
+}

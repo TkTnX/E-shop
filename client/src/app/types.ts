@@ -24,3 +24,7 @@ export type FavoriteItemType = {
   user: UserType;
   product: ProductItemType;
 };
+
+export interface CartItemType extends ProductItemType {
+  quantity: number;
+}
