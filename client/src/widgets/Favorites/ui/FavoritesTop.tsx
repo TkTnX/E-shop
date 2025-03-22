@@ -9,7 +9,7 @@ export const FavoritesTop = () => {
       <h4 className={s.title}>
         Favorites <span>({favorites.length || 0})</span>
       </h4>
-      <FavoritesAddAll />
+      <FavoritesAddAll  />
     </div>
   );
 };

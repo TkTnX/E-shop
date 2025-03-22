@@ -2,6 +2,7 @@ import { CartItemType } from "@/app/types";
 import s from "./s.module.scss";
 import { CartItemQuantity } from "@/features/CartItemQuantity";
 import { CartRemoveItemButton } from "@/features/CartRemoveItemButton";
+import { useState } from "react";
 
 type Props = {
   item: CartItemType;
@@ -9,6 +10,10 @@ type Props = {
 };
 
 export const CartItem = ({ item, cartId }: Props) => {
+  const [value, setValue] = useState(item.quantity);
+  const price = item.product.discount
+    ? item.product.price - item.product.price * item.product.discount
+    : item.product.price;
   return (
     <div className={s.cartItem}>
       <div className={s.imgWrapper}>
@@ -17,15 +22,16 @@ export const CartItem = ({ item, cartId }: Props) => {
         <h5>{item.product.title}</h5>
       </div>
       <p className={s.price}>
-        <span>price: </span>${item.product.price}
+        <span>price: </span>${price}
       </p>
       <CartItemQuantity
         cartId={cartId}
         productId={item.product._id}
-        defaultQuantity={item.quantity}
+        value={value}
+        setValue={setValue}
       />
       <p className={s.subtotal}>
-        <span>subtotal: </span>${item.product.price * item.quantity}
+        <span>subtotal: </span>${item.product.price * value}
       </p>
     </div>
   );

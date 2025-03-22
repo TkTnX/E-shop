@@ -1,39 +1,44 @@
-import { useState } from "react";
 import s from "./s.module.scss";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
-import { changeItemQuantity } from "@/widgets/Cart";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { cartStore, changeItemQuantity } from "@/widgets/Cart";
 
 type Props = {
-  defaultQuantity: number;
   productId: number;
   cartId: number;
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const CartItemQuantity = ({
-  defaultQuantity,
   cartId,
   productId,
+  value,
+  setValue,
 }: Props) => {
-  const [value, setValue] = useState(defaultQuantity);
-
+  const { setTotalPrice } = cartStore;
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: async (type: "plus" | "minus") => {
       if (type === "minus") {
         if (value > 1) {
           setValue(value - 1);
-          await changeItemQuantity(productId, value - 1, cartId);
+          const cart = await changeItemQuantity(productId, value - 1, cartId);
+          setTotalPrice(cart.totalPrice);
         }
       } else {
         setValue(value + 1);
-        await changeItemQuantity(productId, value + 1, cartId);
+
+        const cart = await changeItemQuantity(productId, value + 1, cartId);
+        setTotalPrice(cart.totalPrice);
       }
     },
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["cart"] }),
   });
 
   return (
     <div className={s.wrapper}>
-      <div className={s.quantity}>
+      <div className={`${mutation.isPending ? s.disabled : ""} ${s.quantity}`}>
         <span>{`${value < 10 ? `0${value}` : `${value}`}`}</span>
         <div className={s.buttons}>
           <button onClick={() => mutation.mutate("plus")}>

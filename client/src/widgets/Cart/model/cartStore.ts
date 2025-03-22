@@ -11,15 +11,11 @@ class CartStore {
 
   setCart = (cart: CartType) => {
     this.cart = cart;
+    this.totalPrice = cart.totalPrice;
   };
 
   removeProductFromCart = (productId: number) => {
     if (this.cart) {
-      const findProduct = this.cart.products.find(
-        (p) => p.product._id === productId
-      );
-      if (findProduct)
-        this.totalPrice -= findProduct.product.price * findProduct.quantity;
       this.cart.products = this.cart.products.filter(
         (p) => p.product._id !== productId
       );
@@ -31,6 +27,9 @@ class CartStore {
       this.cart.products.push({ product, quantity: 1 });
       this.totalPrice += product.price;
     }
+  };
+  setTotalPrice = (value: number) => {
+    this.totalPrice = value;
   };
 }
 

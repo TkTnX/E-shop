@@ -16,6 +16,7 @@ export const changeItemQuantity = async (
     });
 
     if (!res) return new Error("Something went wrong");
+    
     return res.data;
   } catch (error) {
     console.log(error);

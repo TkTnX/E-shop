@@ -2,15 +2,20 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import s from "./s.module.scss";
 import { addToCart, cartStore } from "@/widgets/Cart";
 import { ProductItemType } from "@/app/types";
+import { toast } from "react-toastify";
 
 export const AddToCart = ({ product }: { product: ProductItemType }) => {
   const queryClient = useQueryClient();
   const { addToCart: addToStoreCart } = cartStore;
   const mutation = useMutation({
-    mutationFn: () => addToCart(product._id),
+    mutationFn: () => addToCart(product),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["cart"] });
       addToStoreCart(product);
+      toast.success("Product is added to cart!");
+    },
+    onError: () => {
+      toast.error("Product is not added to cart");
     },
   });
 
