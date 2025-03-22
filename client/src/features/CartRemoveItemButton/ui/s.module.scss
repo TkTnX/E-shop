@@ -1,0 +1,12 @@
+.button {
+  border-radius: 100%;
+  background-color: var(--primary);
+  display: flex;
+  min-width: 24px;
+  min-height: 24px;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+

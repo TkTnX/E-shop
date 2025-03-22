@@ -3,13 +3,13 @@ import s from "./s.module.scss";
 import { Link } from "react-router";
 import { ProductItemType } from "@/app/types";
 import { FavoriteButton } from "./FavoriteButton";
+import { AddToCart } from "./AddToCart";
 
 type Props = {
   item: ProductItemType;
 };
 
 export const ProductItemControls = ({ item }: Props) => {
-
   return (
     <div className={s.buttons}>
       <div className={s.controls}>
@@ -18,7 +18,7 @@ export const ProductItemControls = ({ item }: Props) => {
           <Eye />
         </Link>
       </div>
-      <button className={`addToCart ${s.addToCart}`}>Add to cart</button>
+      <AddToCart product={item} />
     </div>
   );
 };

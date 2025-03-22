@@ -5,6 +5,7 @@ import { getCart } from "../api";
 import { CartItemType } from "@/app/types";
 import { cartStore } from "../model";
 import { observer } from "mobx-react-lite";
+import { CartEmpty } from "@/entities/CartEmpty";
 export const CartTable = observer(() => {
   const { setCart } = cartStore;
   const { data, isPending, error } = useQuery({
@@ -18,6 +19,7 @@ export const CartTable = observer(() => {
 
   if (isPending) return <h1>Loading...</h1>;
   if (error) return <h1>{error.message}</h1>;
+  if (data.products.length === 0) return <CartEmpty />;
   return (
     <div className={s.table}>
       {/* TABLE TOP */}

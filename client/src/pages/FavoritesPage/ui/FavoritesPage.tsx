@@ -1,10 +1,10 @@
-import { FavoritesEmpty, FavoritesTop } from "@/entities/Favorites";
+import { FavoritesEmpty, FavoritesTop } from "@/widgets/Favorites";
 import s from "./s.module.scss";
 import { Slider } from "@/features/Slider";
 import { useQuery } from "@tanstack/react-query";
 import { getFavorites } from "../api/getFavorites";
 import { FavoriteItemType } from "@/app/types";
-import { favoritesStore } from "@/entities/Favorites/model/FavoritesStore";
+import { favoritesStore } from "@/widgets/Favorites/model/FavoritesStore";
 
 export const FavoritesPage = () => {
   const { setFavorites } = favoritesStore;
@@ -18,8 +18,7 @@ export const FavoritesPage = () => {
   });
 
   if (error) return <h1 className={s.error}>{error.message}</h1>;
-  if (data?.length === 0 && !isPending)
-    return <FavoritesEmpty />;
+  if (data?.length === 0 && !isPending) return <FavoritesEmpty />;
 
   return (
     <div className={`container ${s.wrapper}`}>

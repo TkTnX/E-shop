@@ -13,6 +13,10 @@
   p {
     flex: 1;
   }
+
+  @media (max-width: 530px) {
+    display: none;
+  }
 }
 
 .list {
@@ -30,6 +34,19 @@
   box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
   padding: 24px 40px;
   gap: 1px;
+
+  &:hover {
+    .imgWrapper button {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 530px) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #b3b3b3;
+  }
 }
 
 .imgWrapper {
@@ -37,6 +54,8 @@
   align-items: center;
   gap: 20px;
   flex: 1;
+  position: relative;
+
   img {
     width: 54px;
     height: 54px;
@@ -48,9 +67,24 @@
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  button {
+    opacity: 0;
+    transition: all 0.2s ease-in;
+  }
 }
 
 .price,
 .subtotal {
   flex: 1;
+
+  span {
+    display: none;
+    @media (max-width: 530px) {
+      display: inline;
+    }
+  }
 }

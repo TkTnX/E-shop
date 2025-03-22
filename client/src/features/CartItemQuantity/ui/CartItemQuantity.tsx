@@ -2,7 +2,7 @@ import { useState } from "react";
 import s from "./s.module.scss";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
-import { changeItemQuantity } from "@/entities/Cart";
+import { changeItemQuantity } from "@/widgets/Cart";
 
 type Props = {
   defaultQuantity: number;

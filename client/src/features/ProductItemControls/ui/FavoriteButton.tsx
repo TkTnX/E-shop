@@ -1,4 +1,4 @@
-import { favoritesStore } from "@/entities/Favorites/model/FavoritesStore";
+import { favoritesStore } from "@/widgets/Favorites/model/FavoritesStore";
 import { switchFavorites } from "@/pages/FavoritesPage/api/switchFavorites";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart } from "lucide-react";

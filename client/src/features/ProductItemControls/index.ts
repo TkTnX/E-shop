@@ -1,2 +1,1 @@
-export * from "./ProductItemControls"
-export * from "./FavoriteButton"
+export * from "./ui";

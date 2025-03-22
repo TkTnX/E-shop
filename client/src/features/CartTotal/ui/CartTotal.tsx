@@ -1,10 +1,10 @@
-import { cartStore } from "@/entities/Cart";
+import { cartStore } from "@/widgets/Cart";
 import s from "./s.module.scss";
 import { observer } from "mobx-react-lite";
 
 export const CartTotal = observer(() => {
-  const { cart } = cartStore;
-  if (!cart) return null;
+  const { cart, totalPrice } = cartStore;
+  if (!cart || cart.products.length === 0) return null;
   return (
     <div className={s.wrapper}>
       <h4 className={s.title}>Cart Total</h4>
@@ -12,7 +12,7 @@ export const CartTotal = observer(() => {
       <ul className={s.list}>
         <li>
           <p>Subtotal:</p>
-          <span>{cart.totalPrice}</span>
+          <span>{totalPrice}</span>
         </li>
         <li>
           <p>Shipping:</p>
@@ -20,7 +20,7 @@ export const CartTotal = observer(() => {
         </li>
         <li>
           <p>Total:</p>
-          <span>{cart.totalPrice}</span>
+          <span>{totalPrice}</span>
         </li>
       </ul>
 

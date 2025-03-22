@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import { userStore } from "@/features/Auth";
 import { useEffect, useState } from "react";
 import { HeaderDropdown } from "./HeaderDropdown";
-import {favoritesStore} from "@/entities/Favorites/model/FavoritesStore";
+import { favoritesStore } from "@/widgets/Favorites/model/FavoritesStore";
 export const HeaderControls = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [open, setOpen] = useState(false);

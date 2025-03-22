@@ -32,7 +32,7 @@ export type CartType = {
   products: {
     product: ProductItemType;
     quantity: number;
-  };
+  }[];
   createdAt: string;
   updatedAt: string;
 };
