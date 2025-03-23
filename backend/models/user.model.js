@@ -18,11 +18,13 @@ const UserModel = new mongoose.Schema(
     firstName: String,
     lastName: String,
     address: String,
+    phoneNumber: String,
     cartId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Cart",
       default: null,
     },
+
   },
   { timestamps: true }
 );

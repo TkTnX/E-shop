@@ -16,6 +16,7 @@ export type UserType = {
   firstName: string | null;
   lastName: string | null;
   address: string | null;
+  phoneNumber: string | null;
   cartId: number | null;
 };
 

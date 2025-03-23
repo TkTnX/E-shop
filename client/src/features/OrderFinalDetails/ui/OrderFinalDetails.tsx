@@ -1,15 +1,23 @@
-import s from "./s.module.scss"
+import s from "./s.module.scss";
 import { useState } from "react";
 
-// TODO: Доделать этот компонент
 
 export const OrderFinalDetails = () => {
   const [selected, setSelected] = useState<"bank" | "cash">("bank");
-    return <div className="">
-        <div>
-            <button>
-                <div className="" />
-            </button>
+  return (
+    <div className={s.wrapper}>
+      <div className={s.payment}>
+        <button className={s.button} onClick={() => setSelected("bank")}>
+          <div className={`${s.checkbox} ${selected === "bank" && s.active}`} />
+          <span>Bank</span>
+          <img src="/images/general/payments.svg" alt="Payments" />
+        </button>
+        <button className={s.button} onClick={() => setSelected("cash")}>
+          <div className={`${s.checkbox} ${selected === "cash" && s.active}`} />
+          <span>Cash on delivery</span>
+        </button>
       </div>
-  </div>;
+      <button className={s.submit}>Place Order</button>
+    </div>
+  );
 };

@@ -5,6 +5,7 @@ import { HeaderControls } from "@/entities/HeaderControls";
 
 export const Header = () => {
   const { pathname } = useLocation();
+
   return (
     <>
       <p className={s.text}>

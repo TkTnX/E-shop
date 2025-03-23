@@ -35,6 +35,10 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 }
 
 .item {
@@ -50,7 +54,6 @@
   img {
     width: 54px;
     height: 54px;
+    object-fit: contain;
   }
 }
-
-

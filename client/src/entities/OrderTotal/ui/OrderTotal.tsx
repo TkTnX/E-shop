@@ -4,7 +4,6 @@ import { cartStore } from "@/widgets/Cart";
 import { OrderFinalDetails } from "@/features/OrderFinalDetails";
 export const OrderTotal = () => {
   const { cart, totalPrice } = cartStore;
-  console.log(cart);
   if (!cart || cart.products.length === 0) return null;
 
   return (

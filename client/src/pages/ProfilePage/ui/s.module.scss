@@ -1,0 +1,24 @@
+.wrapper {
+  margin-top: 80px !important;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcome {
+  font-size: 14px;
+  span {
+    color: var(--primary);
+  }
+}
+
+.main {
+  margin-top: 80px;
+  display: flex;
+  align-items: flex-start;
+  gap: 100px;
+  justify-content: space-between;
+}
