@@ -16,8 +16,9 @@ export const CartRemoveItemButton = ({ id }: { id: number }) => {
 
   return (
     <button
+      disabled={mutation.isPending}
       onClick={() => mutation.mutate()}
-      className={`removeButton ${s.button}`}
+      className={s.button}
     >
       <X stroke="#fff" />
     </button>

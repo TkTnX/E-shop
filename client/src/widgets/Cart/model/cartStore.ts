@@ -25,7 +25,10 @@ class CartStore {
   addToCart = (product: ProductItemType) => {
     if (this.cart) {
       this.cart.products.push({ product, quantity: 1 });
-      this.totalPrice += product.price;
+
+      this.totalPrice += product.discount
+        ? product.price - product.price * product.discount
+        : product.price;
     }
   };
   setTotalPrice = (value: number) => {

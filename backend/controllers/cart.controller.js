@@ -1,3 +1,4 @@
+import { calculateTotalPrice } from "../helpers/calculateTotalPrice.js";
 import Cart from "../models/cart.model.js";
 export const getCart = async (req, res) => {
   try {
@@ -9,10 +10,7 @@ export const getCart = async (req, res) => {
     );
     if (!cart) return res.status(404).json({ message: "Cart not found!" });
 
-    cart.totalPrice = cart.products.reduce(
-      (acc, c) => acc + c.product.price * c.quantity,
-      0
-    );
+    cart.totalPrice = calculateTotalPrice(cart.products);
 
     await cart.save();
 
@@ -47,11 +45,7 @@ export const changeItemQuantity = async (req, res) => {
 
     product.quantity = quantity;
 
-    cart.totalPrice = cart.products.reduce(
-      (acc, c) => acc + c.product.price * c.quantity,
-      0
-    );
-
+    cart.totalPrice = calculateTotalPrice(cart.products);
 
     await cart.save();
     return res.status(200).json(cart);
@@ -84,10 +78,7 @@ export const removeItemFromCart = async (req, res) => {
       (p) => p.product._id.toString() !== productId
     );
 
-    cart.totalPrice = cart.products.reduce(
-      (acc, p) => acc + p.product.price * p.quantity,
-      0
-    );
+    cart.totalPrice = calculateTotalPrice(cart.products);
 
     await cart.save();
 
@@ -118,10 +109,13 @@ export const addToCart = async (req, res) => {
 
     cart.products.push({ product: productBody._id, quantity: 1 });
 
-    cart.totalPrice = cart.products.reduce(
-      (acc, p) => acc + productBody.price,
-      0
-    );
+    cart.totalPrice = cart.products.reduce((acc, p) => {
+      const discount = productBody.price * productBody.discount || 0;
+      discount !== 0
+        ? acc + (productBody.price - discount)
+        : acc + productBody.price;
+    }, 0);
+
 
     await cart.save();
 

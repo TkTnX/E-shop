@@ -66,6 +66,11 @@
     -webkit-line-clamp: 1; // Определяем количество строк перед достижением многоточия
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+
+    @media (max-width: 400px) {
+      -webkit-line-clamp: 2;
+      text-align: center;
+    }
   }
 
   @media (max-width: 768px) {
@@ -87,4 +92,14 @@
       display: inline;
     }
   }
+}
+
+.price {
+  color: var(--primary);
+}
+
+.priceWithoutDiscount {
+  text-decoration: line-through;
+  color: #b3b3b3;
+  font-weight: 400;
 }

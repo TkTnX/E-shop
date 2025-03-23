@@ -19,22 +19,6 @@
   font-size: 20px;
 }
 
-.list {
-  margin-top: 24px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  li {
-    padding-bottom: 16px;
-    border-bottom: 1px solid #999999;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-}
-
 .button {
   background-color: var(--primary);
   color: #fff;

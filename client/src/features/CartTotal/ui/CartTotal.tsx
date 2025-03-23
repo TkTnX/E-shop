@@ -1,6 +1,8 @@
 import { cartStore } from "@/widgets/Cart";
 import s from "./s.module.scss";
 import { observer } from "mobx-react-lite";
+import { Link } from "react-router";
+import { OrderCheck } from "@/shared/ui/OrderCheck/ui";
 
 export const CartTotal = observer(() => {
   const { cart, totalPrice } = cartStore;
@@ -9,22 +11,11 @@ export const CartTotal = observer(() => {
     <div className={s.wrapper}>
       <h4 className={s.title}>Cart Total</h4>
 
-      <ul className={s.list}>
-        <li>
-          <p>Subtotal:</p>
-          <span>{totalPrice}</span>
-        </li>
-        <li>
-          <p>Shipping:</p>
-          <span>Free</span>
-        </li>
-        <li>
-          <p>Total:</p>
-          <span>{totalPrice}</span>
-        </li>
-      </ul>
+      <OrderCheck totalPrice={totalPrice} />
 
-      <button className={s.button}>Go to Checkout</button>
+      <Link to={"/checkout"} className={s.button}>
+        Go to Checkout
+      </Link>
     </div>
   );
 });

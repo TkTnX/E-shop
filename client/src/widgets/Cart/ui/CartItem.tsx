@@ -11,9 +11,11 @@ type Props = {
 
 export const CartItem = ({ item, cartId }: Props) => {
   const [value, setValue] = useState(item.quantity);
+  
   const price = item.product.discount
     ? item.product.price - item.product.price * item.product.discount
     : item.product.price;
+  
   return (
     <div className={s.cartItem}>
       <div className={s.imgWrapper}>
@@ -22,7 +24,15 @@ export const CartItem = ({ item, cartId }: Props) => {
         <h5>{item.product.title}</h5>
       </div>
       <p className={s.price}>
-        <span>price: </span>${price}
+        <span>price: </span>$
+        {item.product.discount ? (
+          <>
+            {price}{" "}
+            <b className={s.priceWithoutDiscount}>${item.product.price}</b>
+          </>
+        ) : (
+          price
+        )}
       </p>
       <CartItemQuantity
         cartId={cartId}
@@ -31,7 +41,7 @@ export const CartItem = ({ item, cartId }: Props) => {
         setValue={setValue}
       />
       <p className={s.subtotal}>
-        <span>subtotal: </span>${item.product.price * value}
+        <span>subtotal: </span>${price * value}
       </p>
     </div>
   );
