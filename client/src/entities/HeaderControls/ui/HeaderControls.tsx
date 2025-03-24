@@ -35,12 +35,12 @@ export const HeaderControls = () => {
       <HeaderSearch />
       <Link className={s.link} to="/favorites">
         <Heart />
-        {favorites.length > 0 && <Badge quantity={favorites.length} />}
+        {favorites?.length > 0 && <Badge quantity={favorites?.length} />}
       </Link>
       <Link className={s.link} to="/cart">
         <ShoppingCart />
-        {cart && cart.products.length > 0 && (
-          <Badge quantity={cart.products.length} />
+        {cart && cart.products?.length > 0 && (
+          <Badge quantity={cart.products?.length} />
         )}
       </Link>
       {authenticated ? (

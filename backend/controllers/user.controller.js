@@ -3,7 +3,6 @@ import User from "../models/user.model.js";
 import Cart from "../models/cart.model.js";
 import jwt from "jsonwebtoken";
 
-
 export const createUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -97,6 +96,43 @@ export const logoutUser = async (req, res) => {
     res.clearCookie("token");
 
     return res.status(200).json({ message: "Logout successful!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.userId;
+    if (!userId) return res.status(401).json({ message: "User not found!" });
+
+    const body = req.body;
+    if (!body) return res.status(400).json({ message: "Body is null!" });
+
+    const password = body.password;
+
+    if (password) body.password = await bcrypt.hash(password, 10);
+
+    const findUser = await User.findById(userId);
+    if (!findUser) return res.status(404).json({ message: "User not found!" });
+
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: findUser._id },
+      {
+        firstName: body.firstName || findUser.firstName,
+        lastName: body.lastName || findUser.lastName,
+        email: body.email || findUser.email,
+        phoneNumber: body.phoneNumber || findUser.phoneNumber,
+        password: body.password || findUser.password,
+        address: body.address || findUser.address,
+      }
+    );
+    if (!updatedUser)
+      return res.status(500).json({ message: "User not updated!" });
+
+    const { password: _, ...others } = updatedUser._doc;
+    return res.status(200).json(others);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error.message });

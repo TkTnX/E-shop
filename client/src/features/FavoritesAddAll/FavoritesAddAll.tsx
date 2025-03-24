@@ -6,7 +6,6 @@ import { ProductItemType } from "@/app/types";
 import { toast } from "react-toastify";
 export const FavoritesAddAll = () => {
   const { favorites } = favoritesStore;
-  console.log(favorites);
   const mutation = useMutation({
     mutationFn: async () => {
       favorites.forEach(

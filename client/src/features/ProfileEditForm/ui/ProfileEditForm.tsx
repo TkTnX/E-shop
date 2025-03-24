@@ -1,12 +1,18 @@
 import { FormInput } from "@/shared/ui/FormInput";
 import s from "./s.module.scss";
 import { userStore } from "@/features/Auth";
-export const ProfileEditForm = () => {
+
+type Props = {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+
+export const ProfileEditForm = ({ onSubmit }: Props) => {
   const { user } = userStore;
+
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>Edit Your Profile</h2>
-      <form className={s.form}>
+      <form onSubmit={onSubmit} className={s.form}>
         <div className={s.formTop}>
           <FormInput
             label="First Name"

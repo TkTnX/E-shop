@@ -20,6 +20,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px 50px;
+
+  @media (max-width: 840px) {
+    gap: 24px 15px;
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .formBottom {
@@ -32,6 +40,12 @@
   gap: 32px;
   justify-self: flex-end;
   margin-top: 24px;
+
+  @media (max-width: 700px) {
+    flex-direction: column-reverse;
+    justify-self: start;
+    width: 100%;
+  }
 }
 
 .submit {
@@ -39,4 +53,7 @@
   color: #fff;
   padding: 16px 48px;
   border-radius: 4px;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }

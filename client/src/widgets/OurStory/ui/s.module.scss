@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 75px;
+  margin-top: 42px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 20px;
+  }
+}
+
+.left {
+  h2 {
+    font-weight: 600;
+    font-size: 54px;
+    letter-spacing: 0.06em;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+
+  p {
+    margin-top: 24px;
+    line-height: 162%;
+  }
+}
+
+.right {
+  img {
+    min-width: 705px;
+
+    @media (max-width: 1200px) {
+      min-width: unset;
+      border-radius: 50px;
+    }
+  }
+}

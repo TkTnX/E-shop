@@ -17,10 +17,10 @@ export const FavoriteButton = observer(({ productId }: Props) => {
 
   useEffect(() => {
     setIsFavorited(
-      favorites.some((item) => item.product?._id === productId) ||
-        favorites.some((item) => item._id === productId)
+      favorites?.some((item) => item.product?._id === productId) ||
+        favorites?.some((item) => item._id === productId)
     );
-  }, [favorites, favorites.length, productId]);
+  }, [favorites, favorites?.length, productId]);
 
   const mutation = useMutation({
     mutationFn: switchFavorites,
