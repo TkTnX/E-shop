@@ -1,0 +1,31 @@
+.wrapper {
+  margin-top: 80px !important;
+  min-height: calc(100vh - 500px);
+}
+
+.main {
+  margin-top: 140px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-weight: 500;
+    font-size: 110px;
+    letter-spacing: 0.03em;
+
+    @media (max-width: 600px) {
+      font-size: 55px;
+    }
+  }
+
+  a {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 16px 48px;
+    margin-top: 80px;
+    background-color: var(--primary);
+    color: #fff;
+  }
+}

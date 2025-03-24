@@ -1,6 +1,7 @@
 import { FormInput } from "@/shared/ui/FormInput";
 import s from "./s.module.scss";
 import { userStore } from "@/features/Auth";
+import { Button } from "@/shared/ui/Button";
 
 type Props = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -46,9 +47,7 @@ export const ProfileEditForm = ({ onSubmit }: Props) => {
           <button className={s.cancel} type="button">
             Cancel
           </button>
-          <button className={s.submit} type="submit">
-            Save Changes
-          </button>
+          <Button type="submit">Save Changes</Button>
         </div>
       </form>
     </div>

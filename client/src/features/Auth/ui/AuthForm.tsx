@@ -6,6 +6,7 @@ import { axiosInstance } from "@/shared/api/axiosInstance";
 import { AxiosError } from "axios";
 import { observer } from "mobx-react-lite";
 import { userStore } from "../model";
+import { Button } from "@/shared/ui/Button";
 
 type Props = {
   type: "signUp" | "login";
@@ -60,9 +61,9 @@ export const AuthForm = observer(({ type }: Props) => {
         <FormInput required name="email" type="email" placeholder="Email" />
         <FormInput required name="password" placeholder="Passowrd" />
 
-        <button type="submit" className={s.button}>
+        <Button type="submit" className={s.button}>
           {isSignUp ? "Create Account" : "Log in"}
-        </button>
+        </Button>
       </form>
       {error && <span className={s.error}>{error}</span>}
       <p className={s.link}>

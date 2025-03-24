@@ -8,6 +8,9 @@ import { CartPage } from "@/pages/CartPage";
 import { CheckoutPage } from "@/pages/CheckoutPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { AboutPage } from "@/pages/AboutPage";
+import { ContactPage } from "@/pages/ContactPage";
+import { NotFound } from "@/pages/NotFound";
+import { ProductPage } from "@/pages/ProductPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +48,18 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutPage />,
+      },
+      {
+        path: "/contacts",
+        element: <ContactPage />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductPage />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

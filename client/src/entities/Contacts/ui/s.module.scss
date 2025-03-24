@@ -1,0 +1,27 @@
+.wrapper {
+  border-radius: 4px;
+  box-shadow: 0 1px 13px 0 rgba(0, 0, 0, 0.05);
+  padding: 40px 35px;
+}
+
+.item {
+  border-bottom: 1px solid #808080;
+  padding-bottom: 32px;
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 32px;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.text {
+  font-size: 14px;
+  margin-top: 24px;
+}

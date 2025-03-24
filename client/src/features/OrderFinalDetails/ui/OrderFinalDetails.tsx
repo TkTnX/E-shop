@@ -1,6 +1,6 @@
+import { Button } from "@/shared/ui/Button";
 import s from "./s.module.scss";
 import { useState } from "react";
-
 
 export const OrderFinalDetails = () => {
   const [selected, setSelected] = useState<"bank" | "cash">("bank");
@@ -17,7 +17,7 @@ export const OrderFinalDetails = () => {
           <span>Cash on delivery</span>
         </button>
       </div>
-      <button className={s.submit}>Place Order</button>
+      <Button style={{ marginTop: "32px" }}>Place Order</Button>
     </div>
   );
 };

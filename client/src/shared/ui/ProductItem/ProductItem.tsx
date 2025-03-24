@@ -33,6 +33,7 @@ export const ProductItem = ({ item, actions }: Props) => {
             `${item.price}$`
           )}
         </p>
+        {/* TODO: Перенести в отдельный компонент и использовать в BigProduct. Возможно ProductItem перенести в entities */}
         <div className={s.rating}>
           {Array.from({ length: item.rating }).map((_, index) => (
             <Star stroke="#ffad33" fill="#ffad33" key={index} size={16} />

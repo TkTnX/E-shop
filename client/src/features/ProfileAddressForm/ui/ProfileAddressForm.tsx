@@ -1,6 +1,7 @@
 import { userStore } from "@/features/Auth";
 import s from "./s.module.scss";
 import { FormInput } from "@/shared/ui/FormInput";
+import { Button } from "@/shared/ui/Button";
 
 type Props = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -16,9 +17,9 @@ export const ProfileAddressForm = ({ onSubmit }: Props) => {
       </p>
       <form onSubmit={onSubmit} className={s.form}>
         <FormInput className={s.input} name="address" label="Address" />
-          <button type="submit" className={s.submit}>
-            Save address
-          </button>
+        <Button type="submit" style={{ marginTop: "32px" }}>
+          Save address
+        </Button>
       </form>
     </div>
   );

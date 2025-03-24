@@ -1,0 +1,26 @@
+.wrapper {
+  margin-top: 80px !important;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 500px);
+}
+
+.loaderImg {
+  animation: loader 1.5s linear infinite;
+  display: flex;
+}
+
+@keyframes loader {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}
