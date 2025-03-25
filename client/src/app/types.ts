@@ -6,6 +6,7 @@ export type ProductItemType = {
   price: number;
   description?: string;
   discount?: number;
+  category: string;
 };
 
 export type UserType = {

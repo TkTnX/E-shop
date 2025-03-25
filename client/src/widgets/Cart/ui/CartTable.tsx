@@ -6,6 +6,7 @@ import { CartItemType } from "@/app/types";
 import { cartStore } from "../model";
 import { observer } from "mobx-react-lite";
 import { CartEmpty } from "@/entities/CartEmpty";
+import { Loader } from "@/shared/ui/Loader";
 export const CartTable = observer(() => {
   const { setCart } = cartStore;
   const { data, isPending, error } = useQuery({
@@ -17,7 +18,7 @@ export const CartTable = observer(() => {
     },
   });
 
-  if (isPending) return <h1>Loading...</h1>;
+  if (isPending) return <Loader />;
   if (error) return <h1>{error.message}</h1>;
   if (data.products.length === 0) return <CartEmpty />;
   return (

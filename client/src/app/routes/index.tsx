@@ -11,6 +11,7 @@ import { AboutPage } from "@/pages/AboutPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { NotFound } from "@/pages/NotFound";
 import { ProductPage } from "@/pages/ProductPage";
+import { CatalogPage } from "@/pages/CatalogPage";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <ProductPage />,
+      },
+      {
+        path: "/catalog",
+        element: <CatalogPage />,
       },
       {
         path: "*",

@@ -8,9 +8,10 @@ import { observer } from "mobx-react-lite";
 import { FavoriteItemType } from "@/app/types";
 type Props = {
   productId: number;
+  className?: string;
 };
 
-export const FavoriteButton = observer(({ productId }: Props) => {
+export const FavoriteButton = observer(({ productId, className }: Props) => {
   const { favorites, removeFavoriteItem, setFavorites } = favoritesStore;
   const [isFavorited, setIsFavorited] = useState(false);
   const queryClient = useQueryClient();
@@ -42,7 +43,7 @@ export const FavoriteButton = observer(({ productId }: Props) => {
 
   return (
     <button
-      className={s.favoriteButton}
+      className={`${s.favoriteButton} ${className}`}
       onClick={() => mutation.mutate(productId)}
       disabled={mutation.isPending}
     >

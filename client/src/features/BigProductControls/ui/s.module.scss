@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  margin-top: 24px;
+}
+
+.addToCartBtn {
+  position: static;
+  background-color: var(--primary);
+  opacity: 1;
+  color: #fff;
+  padding: 10px 48px;
+  border-radius: 4px;
+}
+
+.addToFavoritesBtn {
+  padding: 8px;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease-in;
+
+  svg {
+    transition: all 0.1s ease-in;
+  }
+
+  &:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+
+    svg {
+      fill: #fff;
+      stroke: #fff;
+    }
+  }
+}

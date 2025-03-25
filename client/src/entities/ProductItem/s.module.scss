@@ -14,6 +14,8 @@
   }
 }
 
+
+
 .imgWrapper {
   position: relative;
   display: flex;
@@ -63,10 +65,4 @@
   text-decoration: line-through;
   color: var(--text);
   margin-left: 12px;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
 }

@@ -6,9 +6,6 @@ import { useNavigate } from "react-router";
 import { ProfileSidebar } from "@/features/ProfileSidebar";
 import { ProfileMain } from "@/widgets/ProfileMain";
 
-// * TODO: ProfileAddressForm
-// * TODO: Адаптив
-// * TODO: Функционал изменения данных профиля
 
 export const ProfilePage = () => {
   const { user } = userStore;

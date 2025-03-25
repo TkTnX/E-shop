@@ -1,8 +1,8 @@
 import { ProductItemType } from "@/app/types";
 import s from "./s.module.scss";
-import { Star } from "lucide-react";
 import { ReactNode } from "react";
 import { Link } from "react-router";
+import { Rating } from "@/shared/ui/Rating";
 type Props = {
   item: ProductItemType;
   actions: ReactNode;
@@ -33,15 +33,7 @@ export const ProductItem = ({ item, actions }: Props) => {
             `${item.price}$`
           )}
         </p>
-        {/* TODO: Перенести в отдельный компонент и использовать в BigProduct. Возможно ProductItem перенести в entities */}
-        <div className={s.rating}>
-          {Array.from({ length: item.rating }).map((_, index) => (
-            <Star stroke="#ffad33" fill="#ffad33" key={index} size={16} />
-          ))}
-          {Array.from({ length: 5 - item.rating }).map((_, index) => (
-            <Star stroke="#bfbfbf" fill="#bfbfbf" key={index} size={16} />
-          ))}
-        </div>
+        <Rating rating={item.rating} />
       </Link>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { ProductItem } from "@/shared/ui/ProductItem";
+import { ProductItem } from "@/entities/ProductItem";
 import { ProductItemType } from "@/app/types";
 import { ProductItemControls } from "@/features/ProductItemControls";
 import s from "./s.module.scss";

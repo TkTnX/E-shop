@@ -7,6 +7,7 @@ export const getProducts = async (req, res) => {
 
     if (filters.discount === "true") findBy.discount = { $gt: 0 };
     if (filters.rating) findBy.rating = { $gte: filters.rating };
+    if (filters.cat) findBy.category = filters.cat;
 
     const products = await Product.find(findBy);
     return res.status(200).json(products);

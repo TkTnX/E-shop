@@ -4,7 +4,12 @@ import { addToCart, cartStore } from "@/widgets/Cart";
 import { ProductItemType } from "@/app/types";
 import { toast } from "react-toastify";
 
-export const AddToCart = ({ product }: { product: ProductItemType }) => {
+type Props = {
+  product: ProductItemType
+  className?: string
+}
+
+export const AddToCart = ({ product, className }: Props) => {
   const queryClient = useQueryClient();
   const { addToCart: addToStoreCart } = cartStore;
   const mutation = useMutation({
@@ -23,7 +28,7 @@ export const AddToCart = ({ product }: { product: ProductItemType }) => {
     <button
       disabled={mutation.isPending}
       onClick={() => mutation.mutate()}
-      className={`addToCart ${s.addToCart}`}
+      className={`addToCart ${s.addToCart} ${className}`}
     >
       {mutation.isSuccess ? "Added to cart" : "Add to cart"}
     </button>
