@@ -1,22 +1,21 @@
-import { useNavigate, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import s from "./s.module.scss";
 
 type Props = {
   item: { title: string; value: string };
+  changeCategory: (category: string) => void;
 };
 
-// TODO: Доделать
-
-export const ChangeCategoryButton = ({ item }: Props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const onChangeCategory = () => {
-    setSearchParams({ category: item.value });
-    navigate(`/catalog?category=${searchParams.get("category")}`);
-  };
+export const ChangeCategoryButton = ({ item, changeCategory }: Props) => {
+  const [searchParams] = useSearchParams();
 
   return (
-    <button onClick={onChangeCategory} className={s.btn}>
+    <button
+      onClick={() => changeCategory(item.value)}
+      className={`${s.btn} ${
+        searchParams.get("category") === item.value && s.active
+      }`}
+    >
       {item.title}
     </button>
   );

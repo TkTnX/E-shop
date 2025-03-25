@@ -6,11 +6,12 @@ import { Rating } from "@/shared/ui/Rating";
 type Props = {
   item: ProductItemType;
   actions: ReactNode;
+  className?: string
 };
 
-export const ProductItem = ({ item, actions }: Props) => {
+export const ProductItem = ({ item, actions, className }: Props) => {
   return (
-    <div className={s.item}>
+    <div className={`${s.item} ${className}`}>
       <div className={s.imgWrapper}>
         {item.discount && (
           <p className={s.discountLabel}>-{item.discount * 100}%</p>
