@@ -4,10 +4,10 @@ export const getProducts = async (req, res) => {
   try {
     const filters = req.query;
     const findBy = {};
-
     if (filters.discount === "true") findBy.discount = { $gt: 0 };
     if (filters.rating) findBy.rating = { $gte: filters.rating };
     if (filters.cat) findBy.category = filters.cat;
+    if (filters.q) findBy.title = { $regex: filters.q, $options: "i" };
 
     const products = await Product.find(findBy);
     return res.status(200).json(products);

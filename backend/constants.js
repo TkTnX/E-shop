@@ -1,6 +1,6 @@
 export const PRODUCTS = [
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Sony gamepad",
     img: "/images/products/1.png",
     price: 160,
     discount: 0.25,
@@ -10,7 +10,7 @@ export const PRODUCTS = [
     category: "electronics",
   },
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Xbox Gamepad",
     img: "/images/products/1.png",
     price: 160,
     rating: 3,
@@ -20,7 +20,7 @@ export const PRODUCTS = [
     category: "electronics",
   },
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Logitech Gamepad",
     img: "/images/products/1.png",
     price: 160,
     discount: 0.25,
@@ -30,7 +30,7 @@ export const PRODUCTS = [
     category: "electronics",
   },
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Hyperx Gamepad",
     img: "/images/products/1.png",
     price: 160,
     discount: 0.25,
@@ -40,7 +40,7 @@ export const PRODUCTS = [
     category: "electronics",
   },
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Razer Gamepad",
     img: "/images/products/1.png",
     price: 160,
     discount: 0.25,
@@ -50,7 +50,7 @@ export const PRODUCTS = [
     category: "electronics",
   },
   {
-    title: "HAVIT HV-G92 Gamepad",
+    title: "Corsair Gamepad",
     img: "/images/products/1.png",
     price: 160,
     discount: 0.25,

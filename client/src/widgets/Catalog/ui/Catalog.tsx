@@ -9,13 +9,12 @@ import { ProductItemControls } from "@/features/ProductItemControls";
 import { CatalogEmpty } from "@/entities/CatalogEmpty";
 
 // TODO: Фильтрация по цене
-// TODO: Поиск
 
 export const Catalog = () => {
   const [searchParams] = useSearchParams();
 
   const { data, isPending, error } = useQuery({
-    queryKey: ["catalog", searchParams.get("cat")],
+    queryKey: ["catalog", searchParams.get("cat"), searchParams.get("q")],
     queryFn: () => getProducts(searchParams),
   });
 
@@ -24,7 +23,13 @@ export const Catalog = () => {
   if (!isPending && !data.length) return <CatalogEmpty />;
   return (
     <div className={s.wrapper}>
-      {searchParams.get("cat") && <p className={s.searchResults}>Search by: {searchParams.get("cat")}</p>}
+      {searchParams.get("cat") ||
+        (searchParams.get("q") && (
+          // TODO: Сделать отображение search by чтобы одновременно показывать и category и search
+          <p className={s.searchResults}>
+            Search by: {searchParams.get("cat") || searchParams.get("q")}
+          </p>
+        ))}
       <div className={s.list}>
         {data.map((product: ProductItemType) => (
           <ProductItem

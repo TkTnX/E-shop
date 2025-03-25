@@ -8,7 +8,9 @@ export const CatalogSidebar = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const changeCategory = (category: string) => {
-    setSearchParams({ ...searchParams, cat: category });
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("cat", category);
+    setSearchParams(newParams);
   };
   return (
     <div className={s.wrapper}>
