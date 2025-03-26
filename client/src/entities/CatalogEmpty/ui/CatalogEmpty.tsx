@@ -1,14 +1,13 @@
 import { Button } from "@/shared/ui/Button";
 import s from "./s.module.scss";
-import { useSearchParams } from "react-router";
+import { catalogStore } from "@/widgets/Catalog";
 export const CatalogEmpty = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  const { clearFilters } = catalogStore;
   return (
     <div className={s.wrapper}>
       <h1>Ooops...</h1>
       <p>There are no products in this category</p>
-      <Button onClick={() => setSearchParams({})}>Clear filters</Button>
+      <Button onClick={clearFilters}>Clear filters</Button>
     </div>
   );
 };

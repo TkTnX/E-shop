@@ -2,7 +2,7 @@ export const PRODUCTS = [
   {
     title: "Sony gamepad",
     img: "/images/products/1.png",
-    price: 160,
+    price: 200,
     discount: 0.25,
     rating: 5,
     description:
@@ -12,7 +12,7 @@ export const PRODUCTS = [
   {
     title: "Xbox Gamepad",
     img: "/images/products/1.png",
-    price: 160,
+    price: 100,
     rating: 3,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
@@ -22,7 +22,7 @@ export const PRODUCTS = [
   {
     title: "Logitech Gamepad",
     img: "/images/products/1.png",
-    price: 160,
+    price: 344,
     discount: 0.25,
     rating: 1,
     description:
@@ -32,7 +32,7 @@ export const PRODUCTS = [
   {
     title: "Hyperx Gamepad",
     img: "/images/products/1.png",
-    price: 160,
+    price: 235,
     discount: 0.25,
     rating: 4,
     description:
@@ -42,7 +42,7 @@ export const PRODUCTS = [
   {
     title: "Razer Gamepad",
     img: "/images/products/1.png",
-    price: 160,
+    price: 888,
     discount: 0.25,
     rating: 2,
     description:

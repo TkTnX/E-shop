@@ -4,14 +4,25 @@ import s from "./s.module.scss";
 import { CategoryPriceInput } from "@/features/CategoryPriceInput";
 import { useSearchParams } from "react-router";
 import { Button } from "@/shared/ui/Button";
-export const CatalogSidebar = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+import { catalogStore } from "@/widgets/Catalog/model";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
+type Props = {
+  maxAndMinPrice: number[];
+};
+
+export const CatalogSidebar = observer(({ maxAndMinPrice }: Props) => {
+  const [, setSearchParams] = useSearchParams();
+  const { params, setParams, clearFilters } = catalogStore;
   const changeCategory = (category: string) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("cat", category);
-    setSearchParams(newParams);
+    setParams("cat", category);
   };
+
+  useEffect(() => {
+    setSearchParams(params);
+  }, [params, setSearchParams]);
+
   return (
     <div className={s.wrapper}>
       <div className={s.block}>
@@ -28,11 +39,9 @@ export const CatalogSidebar = () => {
       </div>
       <div className={s.block}>
         <b>Price</b>
-        <CategoryPriceInput />
+        <CategoryPriceInput maxAndMinPrice={maxAndMinPrice} />
       </div>
-      {searchParams.get("cat") && (
-        <Button onClick={() => setSearchParams({})}>Clear filters</Button>
-      )}
+      {params && <Button onClick={clearFilters}>Clear filters</Button>}
     </div>
   );
-};
+});

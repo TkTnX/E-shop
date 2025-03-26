@@ -7,29 +7,40 @@ import { ProductItemType } from "@/app/types";
 import { ProductItem } from "@/entities/ProductItem";
 import { ProductItemControls } from "@/features/ProductItemControls";
 import { CatalogEmpty } from "@/entities/CatalogEmpty";
+import { useEffect } from "react";
 
-// TODO: Фильтрация по цене
+type Props = {
+  setMaxAndMinPrice: (nums: number[]) => void;
+};
 
-export const Catalog = () => {
+export const Catalog = ({ setMaxAndMinPrice }: Props) => {
   const [searchParams] = useSearchParams();
-
   const { data, isPending, error } = useQuery({
     queryKey: ["catalog", searchParams.get("cat"), searchParams.get("q")],
     queryFn: () => getProducts(searchParams),
   });
+
+  useEffect(() => {
+    if (data) {
+      const minPrice = Math.min(...data.map((p: ProductItemType) => p.price));
+      const maxPrice = Math.max(...data.map((p: ProductItemType) => p.price));
+      setMaxAndMinPrice([minPrice, maxPrice]);
+    }
+  }, [data, setMaxAndMinPrice]);
 
   if (isPending) return <Loader />;
   if (error) return <div>Error! {error.message}</div>;
   if (!isPending && !data.length) return <CatalogEmpty />;
   return (
     <div className={s.wrapper}>
-      {searchParams.get("cat") ||
-        (searchParams.get("q") && (
-          // TODO: Сделать отображение search by чтобы одновременно показывать и category и search
-          <p className={s.searchResults}>
-            Search by: {searchParams.get("cat") || searchParams.get("q")}
-          </p>
-        ))}
+      {searchParams.get("q") && (
+        <p className={s.searchResults}>Search by: {searchParams.get("q")}</p>
+      )}
+      {searchParams.get("cat") && (
+        <p className={s.searchResults}>
+          Category: {searchParams.get("cat") || searchParams.get("q")}
+        </p>
+      )}
       <div className={s.list}>
         {data.map((product: ProductItemType) => (
           <ProductItem
