@@ -8,6 +8,7 @@ import { ProductItem } from "@/entities/ProductItem";
 import { ProductItemControls } from "@/features/ProductItemControls";
 import { CatalogEmpty } from "@/entities/CatalogEmpty";
 import { useEffect } from "react";
+import { catalogStore } from "../model";
 
 type Props = {
   setMaxAndMinPrice: (nums: number[]) => void;
@@ -15,8 +16,9 @@ type Props = {
 
 export const Catalog = ({ setMaxAndMinPrice }: Props) => {
   const [searchParams] = useSearchParams();
+  const { params } = catalogStore;
   const { data, isPending, error } = useQuery({
-    queryKey: ["catalog", searchParams.get("cat"), searchParams.get("q")],
+    queryKey: ["catalog", params],
     queryFn: () => getProducts(searchParams),
   });
 

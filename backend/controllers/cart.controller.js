@@ -116,10 +116,30 @@ export const addToCart = async (req, res) => {
         : acc + productBody.price;
     }, 0);
 
-
     await cart.save();
 
     return res.status(200).json({ message: "Product added to cart!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const submitOrder = async (req, res) => {
+  try {
+    const userId = req.userId;
+    if (!userId) return res.status(401).json({ message: "User not found!" });
+
+    const cart = await Cart.findOne({ userId }).populate("products.product");
+    if (!cart) return res.status(404).json({ message: "Cart not found!" });
+
+    cart.products = [];
+    cart.totalPrice = 0;
+
+    // Какой-то дальнейший функционал мог бы быть
+
+    await cart.save();
+    return res.status(200).json({ message: "Order submitted successfully!" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error.message });

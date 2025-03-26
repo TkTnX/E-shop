@@ -34,6 +34,8 @@ class CartStore {
   setTotalPrice = (value: number) => {
     this.totalPrice = value;
   };
+
+  
 }
 
 export const cartStore = new CartStore();
